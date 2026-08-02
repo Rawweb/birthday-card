@@ -1,0 +1,242 @@
+@import 'tailwindcss';
+
+/* ─── Design Tokens ─────────────────────────────── */
+@theme {
+  --color-bg-deep: #050505;
+  --color-bg-card: #1c0a0a;
+  --color-bg-overlay: #120606;
+
+  --color-accent-crimson: #c1272d;
+  --color-accent-rose: #e85d75;
+  --color-accent-soft: #f0a0a0;
+  --color-accent-glow: #ff6b8a;
+
+  --color-text-primary: #f5eae8;
+  --color-text-muted: #9e7070;
+  --color-text-dim: #5c3535;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-glow: 0 0 20px rgba(232, 93, 117, 0.4);
+  --shadow-glow-lg: 0 0 40px rgba(232, 93, 117, 0.6);
+  --shadow-glow-sm: 0 0 10px rgba(232, 93, 117, 0.3);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+  --animate-heartbeat: heartbeat 2s ease-in-out infinite;
+  --animate-bear-bounce: bearBounce 1.2s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-float-up: floatUp 0.6s ease-out forwards;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-shake: shake 0.8s ease-in-out infinite;
+}
+
+/* ─── Keyframes ──────────────────────────────────── */
+@keyframes heartbeat {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(232, 93, 117, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(232, 93, 117, 0.7);
+  }
+}
+
+@keyframes bearBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(8deg);
+  }
+}
+
+/* ─── Base Reset ─────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+ body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  /* Hides scrollbar on Firefox too */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+  ::selection {
+    background: rgba(232, 93, 117, 0.3);
+    color: var(--color-text-primary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-deep);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent-crimson);
+    border-radius: 2px;
+  }
+}
+
+/* ─── Component Classes ──────────────────────────── */
+@layer components {
+  .screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at top, #2a0a0a 0%, #050505 70%);
+  }
+
+  .card {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    border: 1px solid rgba(193, 39, 45, 0.2);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+    transition:
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(232, 93, 117, 0.4);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-primary {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(193, 39, 45, 0.5);
+    color: var(--color-text-primary);
+    background: rgba(193, 39, 45, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    border-color: var(--color-accent-rose);
+    box-shadow: var(--shadow-glow);
+    background: rgba(193, 39, 45, 0.3);
+  }
+
+  .pin-btn {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    border-radius: 0.75rem;
+    width: 5rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(92, 53, 53, 0.4);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+    /* 3D depth - big shadow below, tiny light edge on top */
+    box-shadow:
+      0 6px 10px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .pin-btn:hover {
+    border-color: rgba(232, 93, 117, 0.5);
+    background: rgba(232, 93, 117, 0.1);
+    box-shadow:
+      var(--shadow-glow-sm),
+      0 6px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .pin-btn:active {
+    /* Moves down 2px + shadow shrinks = physical press feeling */
+    transform: scale(0.94) translateY(2px);
+    background: rgba(232, 93, 117, 0.22);
+    border-color: rgba(232, 93, 117, 0.75);
+    /* Glow fires on active so mobile users SEE the tap */
+    box-shadow:
+      var(--shadow-glow-sm),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ─── Swiper Overrides ───────────────────────────── */
+.swiper-pagination-bullet {
+  background: var(--color-text-muted) !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-accent-rose) !important;
+}
