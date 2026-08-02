@@ -8,7 +8,7 @@ A fully interactive, mobile-first birthday experience built as a personal gift. 
 
 ## 🔗 Live Demo
 
-[View Live](https://your-vercel-link.vercel.app)
+[View Live](https://augusta-birthday.vercel.app)
 
 ---
 
@@ -92,7 +92,7 @@ birthday-surprise/
 
 ```bash
 # Clone the repo
-git clone https://github.com/rawweb/birthday-surprise.git
+git clone https://github.com/Rawweb/birthday-card.git
 
 # Move into the project
 cd birthday-surprise
