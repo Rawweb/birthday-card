@@ -2,7 +2,7 @@ export const CONFIG = {
   // Her details
   name: 'Augusta',
   age: 26,
-  birthday: '2026-08-07',
+  birthday: '2000-08-07',
 
   // The passkey shown when she clicks the photo
   passkey: '805020',
@@ -12,9 +12,12 @@ export const CONFIG = {
 
   // Carousel photos (add as many as you want)
   memories: [
-    '/images/memory-1.png',
-    '/images/memory-2.png',
     '/images/memory-3.png',
+    '/images/memory-5.png',
+    '/images/memory-2.png',
+    '/images/memory-4.png',
+    '/images/memory-1.png',
+    '/images/memory-6.png',
   ],
 
   // Message that types out on the final screen
@@ -52,4 +55,3 @@ I love you more than I know how to say. 🤍`,
     'I promise to love you in ways you can actually feel.',
   ],
 };
-
